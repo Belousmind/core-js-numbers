@@ -105,11 +105,11 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
-  // const sum1 = x1 * x2 + y1 * y2;
-  // const sum2 = x1 * y2 - y1 * x2;
-  // return Math.atan2(sum2, sum1) * 180;
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const sum = x1 * x2 + y1 * y2;
+  const modSum1 = Math.sqrt(x1 * x1 + y1 * y1);
+  const modSum2 = Math.sqrt(x2 * x2 + y2 * y2);
+  return Math.acos(sum / (modSum1 * modSum2));
 }
 
 /**
@@ -178,8 +178,8 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  return pow > 0 ? Math.round(num / 10 ** pow) * 10 ** pow : num;
 }
 
 /**
@@ -223,8 +223,10 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  return Number.isNaN(Number.parseInt(value, 10))
+    ? def
+    : Number.parseInt(value, 10);
 }
 
 /**
@@ -450,8 +452,8 @@ function isInteger(number) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  return Number.parseFloat(str);
 }
 
 /**
@@ -484,8 +486,8 @@ function getIntegerOnString(str, base) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(/* number */) {
-  throw new Error('Not implemented');
+function isSafeInteger(number) {
+  return Number.isSafeInteger(number);
 }
 
 /**
